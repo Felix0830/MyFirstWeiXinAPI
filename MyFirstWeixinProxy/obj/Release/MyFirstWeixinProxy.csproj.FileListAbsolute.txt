@@ -1,0 +1,6 @@
+E:\ProjectForGit\MyFirstWeixinProxy\MyFirstWeixinProxy\bin\MyFirstWeixinProxy.dll.config
+E:\ProjectForGit\MyFirstWeixinProxy\MyFirstWeixinProxy\bin\MyFirstWeixinProxy.dll
+E:\ProjectForGit\MyFirstWeixinProxy\MyFirstWeixinProxy\bin\MyFirstWeixinProxy.pdb
+E:\ProjectForGit\MyFirstWeixinProxy\MyFirstWeixinProxy\obj\Release\MyFirstWeixinProxy.csprojResolveAssemblyReference.cache
+E:\ProjectForGit\MyFirstWeixinProxy\MyFirstWeixinProxy\obj\Release\MyFirstWeixinProxy.dll
+E:\ProjectForGit\MyFirstWeixinProxy\MyFirstWeixinProxy\obj\Release\MyFirstWeixinProxy.pdb
