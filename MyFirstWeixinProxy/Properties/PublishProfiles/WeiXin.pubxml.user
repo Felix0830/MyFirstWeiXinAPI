@@ -10,7 +10,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/MyFirstWeixinProxy.dll">
-      <publishTime>08/25/2015 01:14:24</publishTime>
+      <publishTime>09/01/2015 01:48:16</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>08/29/2015 11:39:43</publishTime>
+    </File>
+    <File Include="CreateMenus.aspx">
+      <publishTime>08/29/2015 00:35:02</publishTime>
     </File>
     <File Include="Default.aspx">
       <publishTime>08/23/2015 02:33:15</publishTime>
@@ -18,8 +24,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="index.aspx">
       <publishTime>08/23/2015 02:20:37</publishTime>
     </File>
+    <File Include="Log.txt">
+      <publishTime>09/01/2015 00:33:37</publishTime>
+    </File>
+    <File Include="menus.txt">
+      <publishTime>08/31/2015 23:27:58</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>08/29/2015 11:39:44</publishTime>
+    </File>
     <File Include="Web.config">
-      <publishTime>08/23/2015 02:57:00</publishTime>
+      <publishTime>08/31/2015 23:04:24</publishTime>
     </File>
     <File Include="WXHandler.ashx">
       <publishTime>08/23/2015 02:24:55</publishTime>

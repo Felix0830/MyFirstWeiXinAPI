@@ -124,8 +124,13 @@ namespace MyFirstWeixinProxy.Core
             }
             else if (xmlMsg.MsgType.Trim().ToLower() == "event")
             {
-                xmlMsg.EventName = root.SelectSingleNode("Event").InnerText;
+                xmlMsg.EventName = root.SelectSingleNode("Event").InnerText.ToLower();
+                if (xmlMsg.EventName.Equals("click"))
+                {
+                    xmlMsg.EventKey = root.SelectSingleNode("EventKey").InnerText;
+                }
             }
+
             return xmlMsg;
         }
 
@@ -138,24 +143,19 @@ namespace MyFirstWeixinProxy.Core
         {
             string xmlTemplate = string.Empty;
             string returnMsg = string.Empty;
-            string musicURL=@"http://qxw1590700051.my3w.com/Musics/xhn.mp3";
             string content = xmlModel.Content.Trim();
 
             if (content == "1")
             {
-                xmlTemplate = XMLMessageTemplate.MusicXML;
-                returnMsg = string.Format(xmlTemplate, xmlModel.FromUserName, xmlModel.ToUserName, GetGMT(), "喜欢你"
-                    , "这是邓紫棋翻唱Beyond的喜欢你，很好听哦！", musicURL);
+                returnMsg = GetTuWenMsg(xmlModel);
             }
             else if (content == "2")
             {
-                string msg = "这是工号9527开发的第一个微信App ^-^";
-                xmlTemplate = XMLMessageTemplate.TextXML;
-                return string.Format(xmlTemplate, xmlModel.FromUserName, xmlModel.ToUserName, GetGMT(), msg);
+                returnMsg = GetMusic(xmlModel);
             }
             else
             {
-                string msg = "回复 1 获取音乐\n" + "回复 2 获取文本";
+                string msg = "IT资讯回复：1\n" + "随机播歌回复：2\n" + "我的简历回复：3";
                 xmlTemplate = XMLMessageTemplate.TextXML;
                 return string.Format(xmlTemplate, xmlModel.FromUserName, xmlModel.ToUserName, GetGMT(), msg);
             }
@@ -164,21 +164,99 @@ namespace MyFirstWeixinProxy.Core
         }
 
         /// <summary>
-        /// 处理订阅事件
+        /// 事件工厂
         /// </summary>
         /// <param name="wxModel"></param>
         /// <returns></returns>
         private static string ProcessEventTypeMsg(WXMessageModel wxModel)
         {
             string returnMsg = string.Empty;
-            if (!string.IsNullOrEmpty(wxModel.EventName) && wxModel.EventName.Trim() == "subscribe")
+            switch (wxModel.EventName.Trim())
             {
-                string xmlTemplate = XMLMessageTemplate.TextXML;
-                string msg = "感谢您关注【每日一笑】公众号。每日一笑给您的生活加点料^-~！！！\n"
-                              +"回复 1 获取音乐\n"
-                              +"回复 2 获取文本";
-                returnMsg = string.Format(xmlTemplate, wxModel.FromUserName, wxModel.ToUserName, GetGMT(), msg);           
+                case "subscribe":
+                    returnMsg = ProcessSubscribeEvent(wxModel);
+                    break;
+                case "click":
+                    returnMsg = ProcessClickEvent(wxModel);
+                    break;
+                case "scan":
+                    break;
+                case "location":
+                    break;
+                default:
+                    break;
             }
+            return returnMsg;
+        }
+
+        /// <summary>
+        /// 处理关注事件
+        /// </summary>
+        /// <param name="wxModel"></param>
+        /// <returns></returns>
+        private static string ProcessSubscribeEvent(WXMessageModel wxModel)
+        {
+            string xmlTemplate = XMLMessageTemplate.TextXML;
+            string msg = "感谢您关注【每日一笑】公众号。每日一笑给您的生活加点料^-~！！！\n"
+                            + "IT资讯回复：1\n"
+                            + "随机播歌回复：2\n"
+                            + "我的简历回复：3";
+            return string.Format(xmlTemplate, wxModel.FromUserName, wxModel.ToUserName, GetGMT(), msg);
+        }
+
+        /// <summary>
+        /// 处理自定义菜单事件
+        /// </summary>
+        /// <param name="wxModel"></param>
+        /// <returns></returns>
+        private static string ProcessClickEvent(WXMessageModel wxModel)
+        {
+            string returnMsg = string.Empty;
+            switch (wxModel.EventKey)
+            {
+                case "It_Info":
+                    returnMsg = GetTuWenMsg(wxModel);
+                    break;
+                case "Random_Music":
+                    returnMsg = GetMusic(wxModel);
+                    break;
+                default:
+                    break;
+            }
+            return returnMsg;
+        }
+
+        private static string GetTuWenMsg(WXMessageModel wxModel)
+        {
+            string responceMsg = string.Empty;
+            string articleObj = string.Format(XMLMessageTemplate.ArticleXML
+                                            , "Tiny框架创始人悠然：好的软件设计是“品”出来的", "Tiny是基于Java开发的一款开源框架，主要技术领域为J2EE及应用开发平台领域。"
+                                            , "http://images.csdn.net/20150831/4.jpg", "http://www.csdn.net/article/2015-08-31/2825576-Tiny");
+            articleObj += string.Format(XMLMessageTemplate.ArticleXML
+                                            , "调查：云计算已成企业标配，反之则很难生存", "哈佛商业评论的研究显示迁移到云平台为企业带来的优势已不再明显，因为云计算已成企业标配。"
+                                            , "http://images.csdn.net/20150831/518-131030094253504.jpg", "http://www.csdn.net/article/2015-08-31/2825592");
+            responceMsg = string.Format(XMLMessageTemplate.ImageArticleXML, wxModel.FromUserName, wxModel.ToUserName, GetGMT()
+                                        , 2, articleObj);
+
+            return responceMsg;
+        }
+
+        private static string GetMusic(WXMessageModel wxModel)
+        {
+            Random random = new Random();
+            int num = random.Next(1, 4);
+
+            string xmlTemplate = string.Empty;
+            string returnMsg = string.Empty;
+            string musicURL = string.Format("http://qxw1590700051.my3w.com/Musics/{0}.mp3", num);
+
+            string[] mTitle = new string[] {"喜欢你", "浮夸", "克罗地亚狂想曲" };
+            string[] js = new string[] { "这是邓紫棋翻唱Beyond的喜欢你，很好听哦！", "这是陈亦迅所唱哦，超好听！", "钢琴王子--马克西姆" };
+
+            xmlTemplate = XMLMessageTemplate.MusicXML;
+            int i = num - 1;
+            returnMsg = string.Format(xmlTemplate, wxModel.FromUserName, wxModel.ToUserName, GetGMT(), mTitle[i], js[i], musicURL);
+
             return returnMsg;
         }
 
@@ -203,7 +281,8 @@ namespace MyFirstWeixinProxy.Core
             }
 
             return retsb.ToString();
-        } 
+        }
         #endregion
+
     }
 }

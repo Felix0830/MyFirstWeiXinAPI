@@ -4,3 +4,11 @@ E:\ProjectForGit\MyFirstWeixinProxy\MyFirstWeixinProxy\bin\MyFirstWeixinProxy.pd
 E:\ProjectForGit\MyFirstWeixinProxy\MyFirstWeixinProxy\obj\Debug\MyFirstWeixinProxy.dll
 E:\ProjectForGit\MyFirstWeixinProxy\MyFirstWeixinProxy\obj\Debug\MyFirstWeixinProxy.pdb
 E:\ProjectForGit\MyFirstWeixinProxy\MyFirstWeixinProxy\obj\Debug\MyFirstWeixinProxy.csprojResolveAssemblyReference.cache
+E:\ProjectForGit\MyFirstWeiXinAPI\MyFirstWeixinProxy\bin\MyFirstWeixinProxy.dll.config
+E:\ProjectForGit\MyFirstWeiXinAPI\MyFirstWeixinProxy\bin\MyFirstWeixinProxy.dll
+E:\ProjectForGit\MyFirstWeiXinAPI\MyFirstWeixinProxy\bin\MyFirstWeixinProxy.pdb
+E:\ProjectForGit\MyFirstWeiXinAPI\MyFirstWeixinProxy\bin\Newtonsoft.Json.dll
+E:\ProjectForGit\MyFirstWeiXinAPI\MyFirstWeixinProxy\bin\Newtonsoft.Json.xml
+E:\ProjectForGit\MyFirstWeiXinAPI\MyFirstWeixinProxy\obj\Debug\MyFirstWeixinProxy.dll
+E:\ProjectForGit\MyFirstWeiXinAPI\MyFirstWeixinProxy\obj\Debug\MyFirstWeixinProxy.pdb
+E:\ProjectForGit\MyFirstWeiXinAPI\MyFirstWeixinProxy\obj\Debug\MyFirstWeixinProxy.csprojResolveAssemblyReference.cache

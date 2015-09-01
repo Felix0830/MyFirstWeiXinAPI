@@ -42,6 +42,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.7.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.DynamicData" />
@@ -59,6 +63,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Log.txt" />
+    <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\WeiXin.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -68,7 +74,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CreateMenus.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="menus.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -77,6 +85,13 @@
     <Compile Include="BusinessLayer\HappyLogic.cs" />
     <Compile Include="Core\WXMessageHelper.cs" />
     <Compile Include="Core\XMLMessageTemplate.cs" />
+    <Compile Include="CreateMenus.aspx.cs">
+      <DependentUpon>CreateMenus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CreateMenus.aspx.designer.cs">
+      <DependentUpon>CreateMenus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

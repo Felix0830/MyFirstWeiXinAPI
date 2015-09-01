@@ -1,0 +1,33 @@
+﻿{
+	"button":[
+		 {	
+          "type":"click",
+          "name":"IT资讯",
+          "key":"It_Info"
+      },
+	  {
+		"type":"click",
+		"name":"随机播歌",
+		"key":"Random_Music"
+	  },
+	   {
+           "name":"其他",
+           "sub_button":[
+           {	
+               "type":"view",
+               "name":"个人简历",
+               "url":"http://zhan.qq.com/sites/templates/24719/index.html"
+            },
+            {
+               "type":"view",
+               "name":"静书房",
+               "url":"http://zhan.qq.com/sites/templates/6083/index.html"
+            },
+            {
+               "type":"click",
+               "name":"赞一下我们",
+               "key":"V1001_GOOD"
+            }]
+       }
+	]
+}
